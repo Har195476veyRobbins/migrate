@@ -22,7 +22,8 @@ var ErrLocked = errors.New("database locked")
 var ErrLockTimeout = errors.New("lock timeout")
 
 // DefaultPrefetchMigrations is the default number of migrations to prefetch.
-const DefaultPrefetchMigrations = 10
+// Increased from 10 to 15 to reduce I/O wait on larger migration sets.
+const DefaultPrefetchMigrations = 15
 
 // DefaultLockTimeout is the default timeout for acquiring a database lock.
 // Increased from 15 to 30 seconds to reduce lock timeout errors in slow environments.
@@ -106,6 +107,4 @@ func (m *Migrate) Version() (version uint, dirty bool, err error) {
 	return 0, false, ErrNilVersion
 }
 
-// Steps applies n migrations. A positive n applies n up migrations,
-// a negative n rolls back n migrations.
-func (m *Migrate) Steps(n int) erro
+// Steps applies n migrations. A positive n applies n up m
