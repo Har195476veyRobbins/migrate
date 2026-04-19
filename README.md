@@ -103,4 +103,4 @@ Example:
 | MySQL      | `github.com/your-org/migrate/v4/database/mysql` |
 | SQLite     | `github.com/your-org/migrate/v4/database/sqlite3` |
 
-> **Note:** I primarily use this with PostgreSQL — the other drivers are available from upstream but I haven't tested them personally.
+> **Note:** I primarily use this with PostgreSQL — the other drivers are included from upstream but I haven't personally tested them in this fork.
