@@ -48,6 +48,9 @@ migrate -path ./migrations -database "postgres://localhost:5432/mydb?sslmode=dis
 
 # Force a specific version (useful when fixing a failed migration)
 migrate -path ./migrations -database "postgres://localhost:5432/mydb?sslmode=disable" force 3
+
+# Apply only the next N up migrations
+migrate -path ./migrations -database "postgres://localhost:5432/mydb?sslmode=disable" up 2
 ```
 
 ### Library
@@ -90,6 +93,8 @@ Example:
 000002_add_email_index.down.sql
 ```
 
+> **Tip:** I prefer zero-padded 6-digit version numbers (e.g. `000001`) to keep files sorted correctly in most file explorers and editors.
+
 ## Supported Databases
 
 | Database   | Driver path                                      |
@@ -107,12 +112,5 @@ go test ./...
 # Run tests for a specific database driver
 go test ./database/postgres/...
 
-# Run linter
-golangci-lint run
+# Run lint
 ```
-
-## License
-
-MIT — see [LICENSE](LICENSE) for details.
-
-Based on [golang-migrate/migrate](https://github.com/golang-migrate/migrate), also MIT licensed.
