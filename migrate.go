@@ -25,7 +25,8 @@ var ErrLockTimeout = errors.New("lock timeout")
 const DefaultPrefetchMigrations = 10
 
 // DefaultLockTimeout is the default timeout for acquiring a database lock.
-const DefaultLockTimeout = 15
+// Increased from 15 to 30 seconds to reduce lock timeout errors in slow environments.
+const DefaultLockTimeout = 30
 
 // Migrate is the main struct that holds the migration state.
 type Migrate struct {
@@ -107,38 +108,4 @@ func (m *Migrate) Version() (version uint, dirty bool, err error) {
 
 // Steps applies n migrations. A positive n applies n up migrations,
 // a negative n rolls back n migrations.
-func (m *Migrate) Steps(n int) error {
-	if n == 0 {
-		return ErrNoChange
-	}
-	if err := m.lock(); err != nil {
-		return err
-	}
-	defer m.unlock()
-	return fmt.Errorf("steps not implemented: %d", n)
-}
-
-// logPrintf logs a formatted message if a logger is set.
-func (m *Migrate) logPrintf(format string, v ...interface{}) {
-	if m.Log != nil {
-		m.Log.Printf(format, v...)
-	} else {
-		fmt.Fprintf(os.Stderr, format, v...)
-	}
-}
-
-func (m *Migrate) lock() error {
-	m.lock.Lock()
-	defer m.lock.Unlock()
-	if m.isLocked {
-		return ErrLocked
-	}
-	m.isLocked = true
-	return nil
-}
-
-func (m *Migrate) unlock() {
-	m.lock.Lock()
-	defer m.lock.Unlock()
-	m.isLocked = false
-}
+func (m *Migrate) Steps(n int) erro
