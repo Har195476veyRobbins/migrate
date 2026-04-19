@@ -100,17 +100,7 @@ Example:
 | Database   | Driver path                                      |
 |------------|--------------------------------------------------|
 | PostgreSQL | `github.com/your-org/migrate/v4/database/postgres` |
-| MySQL      | `github.com/your-org/migrate/v4/database/mysql`   |
+| MySQL      | `github.com/your-org/migrate/v4/database/mysql` |
 | SQLite     | `github.com/your-org/migrate/v4/database/sqlite3` |
 
-## Development
-
-```bash
-# Run tests
-go test ./...
-
-# Run tests for a specific database driver
-go test ./database/postgres/...
-
-# Run lint
-```
+> **Note:** I primarily use this with PostgreSQL — the other drivers are available from upstream but I haven't tested them personally.
