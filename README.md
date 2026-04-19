@@ -45,6 +45,9 @@ migrate -path ./migrations -database "postgres://localhost:5432/mydb?sslmode=dis
 
 # Show current migration version
 migrate -path ./migrations -database "postgres://localhost:5432/mydb?sslmode=disable" version
+
+# Force a specific version (useful when fixing a failed migration)
+migrate -path ./migrations -database "postgres://localhost:5432/mydb?sslmode=disable" force 3
 ```
 
 ### Library
@@ -100,6 +103,9 @@ Example:
 ```bash
 # Run tests
 go test ./...
+
+# Run tests for a specific database driver
+go test ./database/postgres/...
 
 # Run linter
 golangci-lint run
