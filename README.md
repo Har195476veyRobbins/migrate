@@ -102,5 +102,6 @@ Example:
 | PostgreSQL | `github.com/your-org/migrate/v4/database/postgres` |
 | MySQL      | `github.com/your-org/migrate/v4/database/mysql` |
 | SQLite     | `github.com/your-org/migrate/v4/database/sqlite3` |
+| CockroachDB | `github.com/your-org/migrate/v4/database/cockroachdb` |
 
-> **Note:** I primarily use this with PostgreSQL — the other drivers are included from upstream but I haven't personally tested them in this fork.
+> **Note:** I primarily use PostgreSQL — the other drivers are included for completeness but are not regularly tested in this fork.
