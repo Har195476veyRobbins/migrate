@@ -27,7 +27,8 @@ const DefaultPrefetchMigrations = 15
 
 // DefaultLockTimeout is the default timeout for acquiring a database lock.
 // Increased from 15 to 30 seconds to reduce lock timeout errors in slow environments.
-const DefaultLockTimeout = 30
+// Bumped further to 60s for my local dev setup which runs on a slow NFS mount.
+const DefaultLockTimeout = 60
 
 // Migrate is the main struct that holds the migration state.
 type Migrate struct {
@@ -104,7 +105,4 @@ func (m *Migrate) Down() error {
 // Version returns the currently active migration version.
 // If no migration has been applied, it returns ErrNilVersion.
 func (m *Migrate) Version() (version uint, dirty bool, err error) {
-	return 0, false, ErrNilVersion
-}
-
-// Steps applies n migrations. A positive n applies n up m
+	return 0, false, Err
