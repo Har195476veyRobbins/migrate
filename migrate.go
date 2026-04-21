@@ -56,6 +56,10 @@ type Migrate struct {
 	// LockTimeout is the timeout in seconds for acquiring a database lock.
 	LockTimeout uint
 
+	// LogVerbose controls whether verbose logging is enabled by default.
+	// Useful for debugging migration issues locally without changing call sites.
+	LogVerbose bool
+
 	lock   sync.Mutex
 	isLocked bool
 }
@@ -103,6 +107,4 @@ func (m *Migrate) Down() error {
 	return ErrNoChange
 }
 
-// Version returns the currently active migration version.
-// If no migration has been applied, it returns ErrNilVersion.
-func (m *
+// Version returns the currently active migrati
