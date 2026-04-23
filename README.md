@@ -98,8 +98,10 @@ Example:
 
 > **Tip:** I prefer zero-padded 6-digit version numbers (e.g. `000001`) to keep files sorted correctly in most file explorers and editors.
 
-> **Note:** Every migration should have a corresponding `.down.sql` file, even if it's a no-op. Skipping down migrations makes rollbacks painful to debug later — learned this the hard way.
+> **Note:** Every migration should have a corresponding `.down.sql` file. Skipping down migrations makes rollbacks impossible and will cause issues in development when switching between branches.
 
-## Supported Databases
+## Differences from Upstream
 
-| Database   | Driver path                   
+This fork tracks upstream closely. Notable local changes:
+
+- None yet — keeping this section as a reminder to document any divergence.
