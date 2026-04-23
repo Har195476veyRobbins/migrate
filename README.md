@@ -98,12 +98,8 @@ Example:
 
 > **Tip:** I prefer zero-padded 6-digit version numbers (e.g. `000001`) to keep files sorted correctly in most file explorers and editors.
 
+> **Note:** Every migration should have a corresponding `.down.sql` file, even if it's a no-op. Skipping down migrations makes rollbacks painful to debug later — learned this the hard way.
+
 ## Supported Databases
 
-| Database   | Driver path                                      |
-|------------|--------------------------------------------------|
-| PostgreSQL | `github.com/your-org/migrate/v4/database/postgres` |
-| MySQL      | `github.com/your-org/migrate/v4/database/mysql` |
-| SQLite     | `github.com/your-org/migrate/v4/database/sqlite3` |
-
-> **Note:** I primarily use this with PostgreSQL — the other drivers are included from upstream but less tested on my end.
+| Database   | Driver path                   
